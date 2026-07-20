@@ -1,7 +1,7 @@
 import streamlit as st
 from dataclasses import asdict
 import pandas as pd
-from db_query import get_conversations, get_stats
+from db_query import get_conversations, get_stats, get_relevance_stats, get_user_feedback_stats
 
 st.title("Course Assistant Dashboard")
 
@@ -30,3 +30,11 @@ for record in records:
     st.write(f"{record.answer[:200]}...")
     st.write(f"Time: {record.response_time:.2f}s | Cost: ${record.cost:.4f}")
     st.divider()
+
+st.subheader("Judge relevance")
+relevance = get_relevance_stats()
+st.bar_chart(relevance)
+
+st.subheader("Judge relevance")
+relevance = get_relevance_stats()
+st.bar_chart(relevance)
